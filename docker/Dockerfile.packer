@@ -14,6 +14,7 @@ RUN cp buildAllPlatforms.sh build.sh && \
     mv ./bin/AmlImg_* /bin/AmlImg && \
     chmod +x /bin/AmlImg
 
-COPY scripts/packer/pack-res-img.sh scripts/packer/pack-burn-img.sh /bin/
+COPY scripts/packer/pack-resource-image scripts/packer/pack-burn-image scripts/packer/pack-image /bin/
 RUN chmod +x /bin/pack-*.sh
 WORKDIR /uboot
+CMD ["pack-image"]

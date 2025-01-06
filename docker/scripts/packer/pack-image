@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pack-resource-image
+
+pack-burn-image

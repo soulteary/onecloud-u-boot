@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "Generate resource"
+
+mkdir -p resource
+
+if [ -f "resource/bootup.bmp" ]; then
+    echo "Use existing resource/bootup.bmp"
+else
+    rm -rf resource
+
+    convert \
+        -size 640x360 \
+        -background black \
+        -gravity center -font "DejaVu-Sans" -pointsize 64 -fill white label:"U-Boot" \
+        BMP3:resource/bootup.bmp
+fi
+
+cat <<EOF >resource/list.txt
+090000:bootup:bootup.bmp
+EOF
+AmlImg res_pack build/resource.img resource/
